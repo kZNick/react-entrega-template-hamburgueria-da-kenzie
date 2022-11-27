@@ -45,7 +45,7 @@ export const Buguer = () => {
     if(productInCart === false){
       setBurguerCart((oldBurguerCart) => [...oldBurguerCart, cart]);
     }else{
-      toast('🍔 Produto já adicionando no carrinho', {
+      toast('🍔 O Produto já foi adicionado ao carrinho', {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
