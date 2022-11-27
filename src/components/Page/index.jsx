@@ -34,18 +34,15 @@ export const Buguer = () => {
       price: price,
       category: category,
     };
-    let jaExite = false
+    let productInCart = false
     burguerCart.forEach((buguers) => {
-      console.log(cart.id === buguers.id)
-      console.log()
       if(cart.id === buguers.id){
-        return jaExite = true
+        return productInCart = true
       }else{
-        jaExite = false
+        productInCart = false
       }
     })
-    console.log(jaExite)
-    if(jaExite === false){
+    if(productInCart === false){
       setBurguerCart((oldBurguerCart) => [...oldBurguerCart, cart]);
     }else{
       toast('🍔 Produto já adicionando no carrinho', {
