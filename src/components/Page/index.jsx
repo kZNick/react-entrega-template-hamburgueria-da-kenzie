@@ -6,6 +6,7 @@ import { Main } from "../Styles/ProductsList";
 import { apiBuguer } from "../services/api";
 import { ListProducs, ListProducsFilter } from "../ProductsList/ProductsList";
 import { Carts, EmptyCart } from "../Carts/carts";
+import { toast } from "react-toastify";
 
 export const Buguer = () => {
   const [burguerProducts, setBurguerProducts] = useState([]);
@@ -33,8 +34,31 @@ export const Buguer = () => {
       price: price,
       category: category,
     };
-
-    setBurguerCart((oldBurguerCart) => [...oldBurguerCart, cart]);
+    let jaExite = false
+    burguerCart.forEach((buguers) => {
+      console.log(cart.id === buguers.id)
+      console.log()
+      if(cart.id === buguers.id){
+        return jaExite = true
+      }else{
+        jaExite = false
+      }
+    })
+    console.log(jaExite)
+    if(jaExite === false){
+      setBurguerCart((oldBurguerCart) => [...oldBurguerCart, cart]);
+    }else{
+      toast('🍔 Produto já adicionando no carrinho', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
   };
 
   const removeCart = (cart) => {
